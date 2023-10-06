@@ -9,12 +9,17 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@uidotdev/usehooks": "^2.3.1",
 		"firebase": "^10.4.0",
+		"formik": "^2.4.5",
 		"lucide-react": "^0.284.0",
 		"next": "13.5.4",
+		"radash": "^11.0.0",
 		"react": "^18",
 		"react-dom": "^18",
-		"ui": "*"
+		"react-hot-toast": "^2.4.1",
+		"ui": "*",
+		"zod": "^3.22.4"
 	},
 	"devDependencies": {
 		"@tailwindcss/forms": "^0.5.6",
