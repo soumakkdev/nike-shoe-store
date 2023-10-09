@@ -1,6 +1,6 @@
 import { FormikProvider, useFormik } from 'formik'
 import React from 'react'
-import { Input, Button } from 'ui'
+import { InputBox, Button } from 'ui'
 import { FormikField } from '../components/utils/FormikField'
 import { useAuth } from '../lib/AuthContext'
 import { ILoginParams } from '../types/auth'
@@ -50,7 +50,7 @@ export default function Login() {
 							</label>
 							<div className="mt-2">
 								<FormikField name="email">
-									<Input id="email" type="email" autoComplete="email" required />
+									<InputBox id="email" type="email" autoComplete="email" required />
 								</FormikField>
 							</div>
 						</div>
@@ -68,7 +68,7 @@ export default function Login() {
 							</div>
 							<div className="mt-2">
 								<FormikField name="password">
-									<Input id="password" type="password" autoComplete="current-password" required />
+									<InputBox id="password" type="password" autoComplete="current-password" required />
 								</FormikField>
 							</div>
 						</div>

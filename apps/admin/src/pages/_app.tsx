@@ -1,21 +1,32 @@
 import type { AppProps } from 'next/app'
+import { Inter } from 'next/font/google'
+import { Toaster } from 'react-hot-toast'
+import '../styles/globals.css'
 import 'ui/dist/index.css'
 import { AuthProvider } from '../lib/AuthContext'
-import '../styles/globals.css'
-import { Toaster } from 'react-hot-toast'
+const inter = Inter({ subsets: ['latin'] })
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 export default function App({ Component, pageProps }: AppProps) {
-	const getLayout = (Component as any).getLayout ?? ((page) => page)
 	return (
-		<AuthProvider>
-			{getLayout(<Component {...pageProps} />)}
-			<Toaster
-				position="bottom-center"
-				reverseOrder={false}
-				toastOptions={{
-					duration: 5000,
-				}}
-			/>
-		</AuthProvider>
+		<QueryClientProvider client={queryClient}>
+			<AuthProvider>
+				<main className={`h-full ${inter.className}`}>
+					<Component {...pageProps} />
+				</main>
+				<Toaster
+					position="bottom-center"
+					reverseOrder={false}
+					toastOptions={{
+						duration: 5000,
+					}}
+				/>
+			</AuthProvider>
+
+			<ReactQueryDevtools panelPosition="right" position="bottom-right" />
+		</QueryClientProvider>
 	)
 }
