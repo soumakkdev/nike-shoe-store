@@ -4,6 +4,7 @@ import animatePlugin from 'tailwindcss-animate'
 
 const config: Config = {
 	darkMode: ['class'],
+	// prefix: 'tw-',
 	content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
 	theme: {
 		container: {

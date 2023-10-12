@@ -5,6 +5,7 @@ import { FieldArray, FormikProvider, useFormik } from 'formik'
 import { FormikField } from '@/components/utils/FormikField'
 import AddImagesDialog from '@/components/products/AddImagesDialog'
 import { useState } from 'react'
+import { useAddProduct } from '@/components/products/Products.query'
 
 enum ProductStatus {
 	Active = 'active',
@@ -24,6 +25,7 @@ const statusOptions = [
 
 export default function AddProduct() {
 	const { back } = useRouter()
+	const { mutate: addProduct } = useAddProduct()
 	const [selectedVariantForAddImages, setSelectedVariantForAddImages] = useState(null)
 
 	const formik = useFormik({
@@ -33,6 +35,19 @@ export default function AddProduct() {
 
 	function onSubmit(values) {
 		console.log(values)
+		addProduct(
+			{
+				body: values,
+			},
+			{
+				onSuccess: (data) => {
+					console.log(data)
+				},
+				onError: (err) => {
+					console.log(err)
+				},
+			}
+		)
 	}
 
 	return (
@@ -84,7 +99,7 @@ export default function AddProduct() {
 											</TableCell>
 											<TableCell>
 												<FormikField name={`variants.${index}.price`}>
-													<InputBox size="sm" placeholder="₹ 0" />
+													<InputBox size="sm" type="number" placeholder="₹ 0" />
 												</FormikField>
 											</TableCell>
 											<TableCell>
@@ -93,7 +108,7 @@ export default function AddProduct() {
 												</FormikField>
 											</TableCell>
 											<TableCell>
-												<Button size="sm" variant="outline" onClick={() => setSelectedVariantForAddImages(variant)}>
+												<Button size="sm" variant="outline" onClick={() => setSelectedVariantForAddImages(index)}>
 													Add image
 												</Button>
 											</TableCell>
@@ -110,7 +125,16 @@ export default function AddProduct() {
 				</FieldArray>
 			</FormikProvider>
 
-			<AddImagesDialog open={!!selectedVariantForAddImages} onClose={() => setSelectedVariantForAddImages(null)} onConfirm={() => {}} />
+			{selectedVariantForAddImages !== null ? (
+				<AddImagesDialog
+					open={selectedVariantForAddImages !== null}
+					initialValues={formik.values?.variants[selectedVariantForAddImages]?.images}
+					onClose={() => setSelectedVariantForAddImages(null)}
+					onConfirm={(images) => {
+						formik.setFieldValue(`variants.${selectedVariantForAddImages}.images`, images)
+					}}
+				/>
+			) : null}
 		</Layout>
 	)
 }

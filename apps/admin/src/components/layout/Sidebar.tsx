@@ -1,8 +1,9 @@
 import { useAtom } from 'jotai'
 import { LayoutDashboard, Package, ShoppingBag, Users } from 'lucide-react'
 import Link from 'next/link'
-import { Sheet, SheetContent, cn } from 'ui'
+import { Button, Sheet, SheetContent, cn } from 'ui'
 import { isSidebarOpenAtom } from './Layout'
+import { useAuth } from '@/lib/AuthContext'
 
 const navigation = [
 	{ name: 'Dashboard', href: '/', icon: LayoutDashboard, current: true },
@@ -12,6 +13,7 @@ const navigation = [
 ]
 
 export default function Sidebar() {
+	const { logout } = useAuth()
 	const [sidebarOpen, setSidebarOpen] = useAtom(isSidebarOpenAtom)
 
 	return (
@@ -75,6 +77,9 @@ export default function Sidebar() {
 							</li>
 
 							<li className="-mx-6 mt-auto">
+								<Button variant="secondary" onClick={() => logout()}>
+									Log out
+								</Button>
 								<a
 									href="#"
 									className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-800"

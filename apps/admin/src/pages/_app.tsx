@@ -1,8 +1,8 @@
 import type { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
-import '../styles/globals.css'
 import 'ui/dist/index.css'
+import '../styles/globals.css'
 import { AuthProvider } from '../lib/AuthContext'
 const inter = Inter({ subsets: ['latin'] })
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<AuthProvider>
-				<main className={`h-full ${inter.className}`}>
+				<main className={`${inter.className}`}>
 					<Component {...pageProps} />
 				</main>
 				<Toaster

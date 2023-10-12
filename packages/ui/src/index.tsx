@@ -13,6 +13,7 @@ export * from '@/components/fields/RadioGroup'
 export * from '@/components/fields/Switch'
 export * from '@/components/date/DatePicker'
 export * from '@/components/dropdown/Dropdown'
+export * from '@/components/table/ReactTable'
 
 export * from '@/lib/utils'
 export * from '@/types'

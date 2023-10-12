@@ -9,14 +9,18 @@
 		"generate": "prisma generate"
 	},
 	"dependencies": {
+		"@nike/types": "*",
 		"@prisma/client": "^5.4.1",
 		"cors": "^2.8.5",
 		"dotenv": "^16.3.1",
 		"express": "^4.18.2",
+		"firebase-admin": "^11.11.0",
 		"helmet": "^7.0.0",
 		"http-errors": "^2.0.0",
 		"morgan": "^1.10.0",
-		"winston": "^3.11.0"
+		"radash": "^11.0.0",
+		"winston": "^3.11.0",
+		"zod": "^3.22.4"
 	},
 	"devDependencies": {
 		"@types/cors": "^2.8.14",

@@ -38,7 +38,7 @@ model ProductVariant {
   productId Int
 
   color  String
-  price  String
+  price  Float
   images Json[]
   sku    String
 }

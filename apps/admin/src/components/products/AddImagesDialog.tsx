@@ -1,23 +1,67 @@
+import { FieldArray, FormikProvider, useFormik } from 'formik'
+import { Trash2 } from 'lucide-react'
 import React from 'react'
-import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from 'ui'
+import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, InputBox } from 'ui'
+import { FormikField } from '../utils/FormikField'
 
-export default function AddImagesDialog({ open, onClose, onConfirm }: { open: boolean; onClose: () => void; onConfirm: () => void }) {
+export default function AddImagesDialog({
+	open,
+	onClose,
+	onConfirm,
+	initialValues,
+}: {
+	open: boolean
+	onClose: () => void
+	onConfirm: (images: string[]) => void
+	initialValues?: string[]
+}) {
+	const formik = useFormik({
+		initialValues: { images: initialValues ?? [''] },
+		onSubmit,
+	})
+
+	function onSubmit(values) {
+		onConfirm(values.images)
+		onClose()
+	}
+
 	return (
 		<Dialog open={open} onOpenChange={() => onClose()}>
-			<DialogContent>
-				<DialogHeader>
-					<DialogTitle>Add Variant Images</DialogTitle>
-				</DialogHeader>
+			<FormikProvider value={formik}>
+				<DialogContent>
+					<DialogHeader>
+						<DialogTitle>Add Variant Images</DialogTitle>
+					</DialogHeader>
 
-				<div></div>
+					<div className="space-y-3">
+						<FieldArray name="images">
+							{({ push, remove }) => (
+								<>
+									{formik.values?.images?.map((image, index) => (
+										<div key={index} className="flex items-center gap-3">
+											<FormikField name={`images.${index}`}>
+												<InputBox placeholder="Image URL" />
+											</FormikField>
+											<Trash2 onClick={() => remove(index)} />
+										</div>
+									))}
 
-				<DialogFooter>
-					<Button variant="secondary" onClick={onClose}>
-						Cancel
-					</Button>
-					<Button onClick={onConfirm}>Confirm</Button>
-				</DialogFooter>
-			</DialogContent>
+									<Button size="sm" variant="outline" onClick={() => push('')}>
+										Add New
+									</Button>
+								</>
+							)}
+						</FieldArray>
+					</div>
+
+					<DialogFooter>
+						<Button variant="secondary" onClick={onClose}>
+							Cancel
+						</Button>
+						<Button onClick={() => formik.handleSubmit()}>Confirm</Button>
+					</DialogFooter>
+				</DialogContent>
+			</FormikProvider>
 		</Dialog>
 	)
 }
