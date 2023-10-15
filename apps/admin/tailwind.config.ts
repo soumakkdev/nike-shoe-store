@@ -1,4 +1,4 @@
-// module.exports = require('ui/tailwind.config')
+// module.exports = require('@nike/ui/tailwind.config')
 
 import type { Config } from 'tailwindcss'
 

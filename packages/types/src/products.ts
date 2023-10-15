@@ -11,7 +11,20 @@ export type IAddProductVariantReq = z.infer<typeof ZAddProductVariantReq>
 export const ZAddProductReq = z.object({
 	name: z.string(),
 	description: z.string().optional().nullable(),
+	category: z.string().optional().nullable(),
 	status: z.string(),
 	variants: ZAddProductVariantReq.array(),
 })
 export type IAddProductReq = z.infer<typeof ZAddProductReq>
+
+export const ZProductVariant = ZAddProductVariantReq.extend({
+	id: z.number(),
+})
+export type IProductVariant = z.infer<typeof ZProductVariant>
+
+export const ZProduct = ZAddProductReq.extend({
+	id: z.number(),
+	createdAt: z.string(),
+	variants: ZProductVariant.array(),
+})
+export type IProduct = z.infer<typeof ZProduct>

@@ -1,6 +1,6 @@
 import { FormikProvider, useFormik } from 'formik'
 import React from 'react'
-import { InputBox, Button } from 'ui'
+import { InputBox, Button } from '@nike/ui'
 import { FormikField } from '../components/utils/FormikField'
 import { useAuth } from '../lib/AuthContext'
 import { ILoginParams } from '../types/auth'

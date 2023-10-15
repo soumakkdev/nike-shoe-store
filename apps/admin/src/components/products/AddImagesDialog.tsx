@@ -1,7 +1,7 @@
 import { FieldArray, FormikProvider, useFormik } from 'formik'
 import { Trash2 } from 'lucide-react'
 import React from 'react'
-import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, InputBox } from 'ui'
+import { Button, Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, InputBox } from '@nike/ui'
 import { FormikField } from '../utils/FormikField'
 
 export default function AddImagesDialog({

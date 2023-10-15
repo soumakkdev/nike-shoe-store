@@ -1,4 +1,4 @@
-// module.exports = require('ui/postcss.config')
+// module.exports = require('@nike/ui/postcss.config')
 
 module.exports = {
 	plugins: {

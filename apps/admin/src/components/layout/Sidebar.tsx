@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai'
 import { LayoutDashboard, Package, ShoppingBag, Users } from 'lucide-react'
 import Link from 'next/link'
-import { Button, Sheet, SheetContent, cn } from 'ui'
+import { Button, Sheet, SheetContent, cn } from '@nike/ui'
 import { isSidebarOpenAtom } from './Layout'
 import { useAuth } from '@/lib/AuthContext'
 

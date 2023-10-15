@@ -14,6 +14,7 @@ export * from '@/components/fields/Switch'
 export * from '@/components/date/DatePicker'
 export * from '@/components/dropdown/Dropdown'
 export * from '@/components/table/ReactTable'
+export * from '@/components/loader/Loader'
 
 export * from '@/lib/utils'
 export * from '@/types'

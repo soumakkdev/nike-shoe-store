@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
-	transpilePackages: ['ui'],
+	transpilePackages: ['@nike/ui'],
 }
 
 module.exports = nextConfig

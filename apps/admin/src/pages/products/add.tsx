@@ -1,4 +1,4 @@
-import { Button, InputBox, Select, Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from 'ui'
+import { Button, InputBox, Select, Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '@nike/ui'
 import Layout from '@/components/layout/Layout'
 import { useRouter } from 'next/router'
 import { FieldArray, FormikProvider, useFormik } from 'formik'

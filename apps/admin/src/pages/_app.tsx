@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
-import 'ui/dist/index.css'
+import '@nike/ui/dist/index.css'
 import '../styles/globals.css'
 import { AuthProvider } from '../lib/AuthContext'
 const inter = Inter({ subsets: ['latin'] })
