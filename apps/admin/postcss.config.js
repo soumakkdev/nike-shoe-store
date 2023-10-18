@@ -1,8 +1,1 @@
-// module.exports = require('@nike/ui/postcss.config')
-
-module.exports = {
-	plugins: {
-		tailwindcss: {},
-		autoprefixer: {},
-	},
-}
+module.exports = require('@nike/ui/postcss.config')
