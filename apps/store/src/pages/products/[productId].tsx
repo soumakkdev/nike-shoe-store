@@ -3,7 +3,7 @@ import ProductDetails from '@/components/products/ProductDetails'
 
 export default function ProductDetailsPage() {
 	return (
-		<section className="max-w-7xl mx-auto px-2 lg:px-4">
+		<section className="container">
 			<Header />
 			<ProductDetails />
 		</section>

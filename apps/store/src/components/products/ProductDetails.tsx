@@ -14,7 +14,7 @@ export default function ProductDetails() {
 	const { productId, variantId } = query as unknown as IProductDetailsQuery
 	const { data: product, isLoading } = useProductDetails(productId)
 
-	const variant = product?.variants?.find((variant) => variant.id === toInt(variantId))
+	const variant = product?.variants?.find((variant) => variant.id === toInt(variantId)) ?? product?.variants[0]
 
 	if (isLoading) return <p>Loading...</p>
 

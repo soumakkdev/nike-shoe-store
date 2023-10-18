@@ -16,5 +16,6 @@ export * from '@/components/dropdown/Dropdown'
 export * from '@/components/table/ReactTable'
 export * from '@/components/loader/Loader'
 
+export * from '@/lib/FormikField'
 export * from '@/lib/utils'
 export * from '@/types'

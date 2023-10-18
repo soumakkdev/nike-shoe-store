@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<AuthProvider>
-				<main className={`${inter.className}`}>
+				<main className={`${inter.className} h-full w-full`}>
 					<Component {...pageProps} />
 				</main>
 
