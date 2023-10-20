@@ -28,3 +28,19 @@ export const ZProduct = ZAddProductReq.extend({
 	variants: ZProductVariant.array(),
 })
 export type IProduct = z.infer<typeof ZProduct>
+
+export const ZOrderItem = z.object({
+	id: z.number(),
+	name: z.string(),
+	description: z.string().optional().nullable(),
+	category: z.string().optional().nullable(),
+	status: z.string(),
+	size: z.string().optional().nullable(),
+	color: z.string(),
+	price: z.number(),
+	sku: z.string(),
+	variantId: z.number(),
+	productId: z.number(),
+	images: z.string().array(),
+})
+export type IOrderItem = z.infer<typeof ZOrderItem>

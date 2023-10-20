@@ -15,8 +15,8 @@ export default function Login() {
 	const { emailPasswordLogin } = useAuth()
 	const formik = useFormik({
 		initialValues: {
-			email: '',
-			password: '',
+			email: 'admin@nike.com',
+			password: 'nike@admin',
 		},
 		onSubmit,
 	})

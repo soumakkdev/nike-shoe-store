@@ -4,7 +4,6 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import { isEmpty } from 'radash'
 import { useState } from 'react'
-import 'keen-slider/keen-slider.min.css'
 
 export default function ProductsSlider({ products }: { products: IProduct[] }) {
 	const [currentSlide, setCurrentSlide] = useState(0)
@@ -38,6 +37,10 @@ export default function ProductsSlider({ products }: { products: IProduct[] }) {
 	const totalSlides = instanceRef?.current?.track?.details?.slides?.length ?? 0
 	const slidePerView = (instanceRef?.current?.options?.slides as any)?.perView ?? 0
 
+	// useEffect(() => {
+	// 	instanceRef.current?.update()
+	// }, [instanceRef, loaded])
+
 	return (
 		<div className="relative">
 			<div className="flex justify-between items-center mb-3">
@@ -69,13 +72,13 @@ export default function ProductsSlider({ products }: { products: IProduct[] }) {
 
 			<div ref={sliderRef} className="keen-slider">
 				{products?.map((product) => (
-					<Link key={product.id} href={`/products/${product.id}`}>
-						<div className="keen-slider__slide relative">
+					<div key={product.id} className="keen-slider__slide">
+						<Link href={`/products/${product.id}`}>
 							<img src={product.variants[0].images[0]} alt="" />
 
 							<p>{product.name}</p>
-						</div>
-					</Link>
+						</Link>
+					</div>
 				))}
 			</div>
 		</div>

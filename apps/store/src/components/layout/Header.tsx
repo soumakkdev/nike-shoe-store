@@ -2,8 +2,11 @@ import { User } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import Cart from '../cart/Cart'
+import { useState } from 'react'
 
 export default function Header() {
+	const [isCartOpen, setIsCartOpen] = useState(false)
 	return (
 		<header>
 			<div className="flex items-center justify-between">
@@ -12,7 +15,10 @@ export default function Header() {
 				</Link>
 
 				<div className="flex gap-1">
-					<div className="hover:bg-slate-100 h-10 w-10 rounded-full grid place-content-center cursor-pointer">
+					<div
+						className="hover:bg-slate-100 h-10 w-10 rounded-full grid place-content-center cursor-pointer"
+						onClick={() => setIsCartOpen(true)}
+					>
 						<Image width="24" height="24" src="/icons/bag.svg" alt="cart" />
 					</div>
 					<Link href="/login">
@@ -22,6 +28,8 @@ export default function Header() {
 					</Link>
 				</div>
 			</div>
+
+			<Cart open={isCartOpen} onClose={() => setIsCartOpen(false)} />
 		</header>
 	)
 }

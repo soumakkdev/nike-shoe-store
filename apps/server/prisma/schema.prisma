@@ -49,13 +49,17 @@ model OrderItem {
 
   productId   Int
   name        String
+  category    String?
   description String?
   status      String
-  size        String
-  color       String
-  price       String
-  images      Json[]
-  sku         String
+
+  variantId Int
+  color     String
+  price     String
+  images    Json[]
+  sku       String
+
+  size String
 
   order   Order? @relation(fields: [orderId], references: [id])
   orderId Int?
