@@ -4,6 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 import Cart from '../cart/Cart'
 import { useState } from 'react'
+import CartButton from '../cart/CartButton'
 
 export default function Header() {
 	const [isCartOpen, setIsCartOpen] = useState(false)
@@ -15,12 +16,8 @@ export default function Header() {
 				</Link>
 
 				<div className="flex gap-1">
-					<div
-						className="hover:bg-slate-100 h-10 w-10 rounded-full grid place-content-center cursor-pointer"
-						onClick={() => setIsCartOpen(true)}
-					>
-						<Image width="24" height="24" src="/icons/bag.svg" alt="cart" />
-					</div>
+					<CartButton onClick={() => setIsCartOpen(true)} />
+
 					<Link href="/login">
 						<div className="hover:bg-slate-100 h-10 w-10 rounded-full grid place-content-center cursor-pointer">
 							<User className="h-6 w-6" />

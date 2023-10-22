@@ -3,6 +3,7 @@ import './index.css'
 export * from '@/components/ui/dialog'
 export * from '@/components/ui/sheet'
 export * from '@/components/ui/table'
+export * from '@/components/ui/separator'
 
 export * from '@/components/tooltip/Tooltip'
 export * from '@/components/button/Button'

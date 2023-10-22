@@ -1,6 +1,8 @@
 import { IOrderItem, IProduct, IProductVariant } from '@nike/types'
 import { produce } from 'immer'
 import { atom, useAtom } from 'jotai'
+import { toInt } from 'radash'
+import { useMemo } from 'react'
 import toast from 'react-hot-toast'
 
 export const cartItemsAtom = atom<IOrderItem[]>([])
@@ -34,8 +36,33 @@ export default function useCart() {
 		)
 	}
 
+	function removeItemFromCart(index: number) {
+		setCartItems(
+			produce((draft) => {
+				draft.splice(index, 1)
+			})
+		)
+	}
+
+	const summary = useMemo(() => {
+		let subtotal = 0
+		cartItems?.forEach((cartItem) => {
+			subtotal += toInt(cartItem.price)
+		})
+		const deliveryCharge = 50
+		const total = subtotal + deliveryCharge
+		return {
+			subtotal,
+			deliveryCharge,
+			total,
+		}
+	}, [cartItems])
+
 	return {
 		cartItems,
+		removeItemFromCart,
 		addItemToCart,
+		summary,
+		count: cartItems.length,
 	}
 }
